@@ -17,4 +17,12 @@ package edu.upc.dsa.exceptions;
         }
  */
 
+public class noLlibresPerCatalogar extends Exception //NOTE: Canviar nom
+{
+    public noLlibresPerCatalogar(String message) //NOTE: Canviar nom
+    {
+        super(message);
+    }
+}
+
 

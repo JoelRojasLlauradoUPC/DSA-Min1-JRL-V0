@@ -25,8 +25,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 //NOTE: Podria ser interessant canviar el Endpoint del servei, però si es canvia s'hauria de canviar a Api i Path.
-@Api(value = "/offeredService", description = "Endpoint to the service")
-@Path("/offeredService")
+@Api(value = "/biblioteca", description = "Endpoint to the service")
+@Path("/biblioteca")
 public class Service {
 
     private Manager myManager;
@@ -54,6 +54,96 @@ public class Service {
         INFO:
             - Necessari afegir aquí tots els serveis REST que es vulguin establir.
      */
+
+    @POST
+    @ApiOperation(value = "Afegir nou lector", notes = "asdasd") //NOTE: Modificar descripció
+    @ApiResponses(value = { //NOTE: Modificar classe a la que fan referència
+            @ApiResponse(code = 201, message = "Successful, creado", response = lector.class),
+            @ApiResponse(code = 500, message = "Validation Error"),
+    })
+    @Path("/lectors") //NOTE: Modificar path
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response newLector(lector nouLector)
+    {
+
+        /*if (nouLector.getId() == null || nouLector.getNom() == null || nouLector.getCognoms() == null || nouLector.getDNI() == null)
+        { //Revisar si s'han emplenat els camps obligatoris
+            return Response.status(500).entity(nouLector).build();
+        }*/
+
+        if (this.myManager.getLector(nouLector.getId()) == null) //si no hi ha cap lector amb el mateix id
+        {
+            lector lectorAAfegir = myManager.addLector(
+                    nouLector.getId(),
+                    nouLector.getNom(),
+                    nouLector.getCognoms(),
+                    nouLector.getDNI(),
+                    nouLector.getDataNaixement(),
+                    nouLector.getLlocNaixement(),
+                    nouLector.getDomicili()
+            );
+            return Response.status(200).entity(lectorAAfegir).build();
+        }
+        else
+        {
+            return Response.status(500).entity("Ja existeix un lector amb aquest ID").build();
+        }
+
+    }
+
+    @POST
+    @ApiOperation(value = "Afegir nou llibre al magatzem", notes = "asdasd") //NOTE: Modificar descripció
+    @ApiResponses(value = { //NOTE: Modificar classe a la que fan referència
+            @ApiResponse(code = 201, message = "Successful, creado", response = lector.class),
+            @ApiResponse(code = 500, message = "Validation Error"),
+    })
+    @Path("/magatzem/afegirLlibre") //NOTE: Modificar path
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response newLlibre(llibre nouLlibre)
+    {
+
+        if (nouLlibre.getIsbn() == null || nouLlibre.getTitol() == null || nouLlibre.getEditorial() == null || nouLlibre.getAutor() == null)
+        { //Revisar si s'han emplenat els camps obligatoris
+            return Response.status(500).entity(nouLlibre).build();
+        }
+        llibre llibreAAfegir = myManager.addLlibre(
+                nouLlibre.getIsbn(),
+                nouLlibre.getTitol(),
+                nouLlibre.getEditorial(),
+                nouLlibre.getAnyPublicacio(),
+                nouLlibre.getNumEdicio(),
+                nouLlibre.getAutor(),
+                nouLlibre.getTematica(),
+                nouLlibre.getQuantitatExemplarsDisponibles()
+
+        );
+        return Response.status(200).entity(llibreAAfegir).build();
+
+    }
+
+    @GET
+    @ApiOperation(value = "Catalogar el 1r llibre disponible", notes = "asdasd") //NOTE: Modificar la descripció
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Successful", response = llibre.class),
+            @ApiResponse(code = 404, message = "Not found")
+    })
+    @Path("/catalogar") //NOTE: Si es vol modificar el Path
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response newCatalogacio()
+    {
+        llibre llibreCatalogat = myManager.catalogarLlibre();
+
+        if (llibreCatalogat == null)
+        {
+            return Response.status(404).build();
+        }
+        else{
+            return Response.status(201).entity(llibreCatalogat).build();
+        }
+
+    }
+
+
 
     //TODO: Mètodes GET
     /*

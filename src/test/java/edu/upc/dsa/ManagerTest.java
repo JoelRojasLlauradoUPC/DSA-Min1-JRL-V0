@@ -1,6 +1,6 @@
 package edu.upc.dsa;
 
-import edu.upc.dsa.exceptions.TrackNotFoundException;
+import edu.upc.dsa.exceptions.*;
 
 //NOTE: Importar els models
 /*
@@ -34,12 +34,12 @@ public class ManagerTest {
          */
     }
 
-    //TODO: Clear. 2
+    //TODO: Clear.
 
     @After
     public void tearDown() {
         // És un Singleton
-        this.tm.clear();
+       this.tm.clear();
     }
 
     //TODO: Verificar els ADD
