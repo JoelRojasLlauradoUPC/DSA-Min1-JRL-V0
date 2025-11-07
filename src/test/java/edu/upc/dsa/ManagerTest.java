@@ -34,7 +34,7 @@ public class ManagerTest {
          */
     }
 
-    //TODO: Clear.
+    //TODO: Clear. 2
 
     @After
     public void tearDown() {
