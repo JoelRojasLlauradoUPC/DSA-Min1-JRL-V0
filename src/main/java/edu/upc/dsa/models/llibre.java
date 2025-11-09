@@ -11,9 +11,12 @@ public class llibre {
     String tematica;
     int quantitatExemplarsDisponibles;
 
+
     public llibre() {
 
     }
+
+
     public llibre(String isbn, String titol, String editorial, String anyPublicacio, String numEdicio, String autor, String tematica, int quantitatExemplarsDisponibles) {
         this.isbn = isbn;
         this.titol = titol;
@@ -25,68 +28,93 @@ public class llibre {
         this.quantitatExemplarsDisponibles = quantitatExemplarsDisponibles;
     }
 
+
     public String getIsbn() {
         return this.isbn;
     }
+
 
     public void setIsbn(String nouisbn) {
         this.isbn = nouisbn;
     }
 
+
     public String getTitol() {
         return this.titol;
     }
+
 
     public void setTitol(String nouTitol) {
         this.titol = nouTitol;
     }
 
+
     public String getEditorial() {
         return this.editorial;
     }
+
 
     public void setEditorial(String novaEditorial) {
         this.editorial = novaEditorial;
     }
 
+
     public String getAnyPublicacio() {
         return this.anyPublicacio;
     }
+
 
     public void setAnyPublicacio(String nouAnyPublicacio) {
         this.anyPublicacio = nouAnyPublicacio;
     }
 
+
     public String getNumEdicio() {
         return this.numEdicio;
     }
+
 
     public void setNumEdicio(String nouNumEdicio) {
         this.numEdicio = nouNumEdicio;
     }
 
+
     public String getAutor() {
         return this.autor;
     }
+
 
     public void setAutor(String nouAutor) {
         this.autor = nouAutor;
     }
 
+
     public String getTematica() {
         return this.tematica;
     }
+
 
     public void setTematica(String novaTematica) {
         this.tematica = novaTematica;
     }
 
+
     public int getQuantitatExemplarsDisponibles() {
         return this.quantitatExemplarsDisponibles;
     }
 
+
     public void setQuantitatExemplarsDisponibles(int novaQuantitat) {
         this.quantitatExemplarsDisponibles = novaQuantitat;
+    }
+
+
+    public void prestarUnLlibre() {
+        this.quantitatExemplarsDisponibles --;
+    }
+
+    public void retornarUnLlibre() {
+        this.quantitatExemplarsDisponibles ++;
     }
 
 

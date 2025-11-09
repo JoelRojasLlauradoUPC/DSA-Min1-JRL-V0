@@ -6,76 +6,95 @@ public class prestec {
 
     String idPrestec;
     String idLector;
-    String ISBNLlibre;
-    Date dataIniciPrestec;
-    Date dataFinalPrestec;
+    String isbnLlibre;
+    String dataIniciPrestec;
+    String dataFinalPrestec;
     int estatPrestec; //0 = prèstec finalitzat, 1 = prèstec en curs
+
 
     public prestec() {
 
     }
-    public prestec(String idPrestec, String idLector, String ISBNLlibre, Date dataFinalPrestec) {
+
+
+    public prestec(String idPrestec, String idLector, String isbnLlibre, String dataFinalPrestec) {
         this.idPrestec = idPrestec;
         this.idLector = idLector;
-        this.ISBNLlibre = ISBNLlibre;
-        this.dataIniciPrestec = new Date(); //data actual
+        this.isbnLlibre = isbnLlibre;
+        this.dataIniciPrestec = new Date().toString(); //data actual
         this.dataFinalPrestec = dataFinalPrestec;
         this.estatPrestec = 1; //prèstec en curs
     }
+
 
     public String getIdPrestec() {
         return this.idPrestec;
     }
 
+
     public void setIdPrestec(String nouIdPrestec) {
         this.idPrestec = nouIdPrestec;
     }
+
 
     public String getIdLector() {
         return this.idLector;
     }
 
+
     public void setIdLector(String nouIdLector) {
         this.idLector = nouIdLector;
     }
 
-    public String getISBNLlibre() {
-        return this.ISBNLlibre;
+
+    public String getIsbnLlibre() {
+        return this.isbnLlibre;
     }
 
-    public void setISBNLlibre(String nouISBNLlibre) {
-        this.ISBNLlibre = nouISBNLlibre;
+
+    public void setIsbnLlibre(String nouIsbnLlibre) {
+        this.isbnLlibre = nouIsbnLlibre;
     }
 
-    public Date getDataIniciPrestec() {
+
+    public String getDataIniciPrestec() {
         return this.dataIniciPrestec;
     }
 
-    public void setDataIniciPrestec(Date novaDataInici) {
+
+    public void setDataIniciPrestec(String novaDataInici) {
         this.dataIniciPrestec = novaDataInici;
     }
 
-    public Date getDataFinalPrestec() {
+
+    public String getDataFinalPrestec() {
         return this.dataFinalPrestec;
     }
 
-    public void setDataFinalPrestec(Date novaDataFinal) {
+
+    public void setDataFinalPrestec(String novaDataFinal) {
         this.dataFinalPrestec = novaDataFinal;
     }
+
 
     public int getEstatPrestec() {
         return this.estatPrestec;
     }
 
+
     public void setEstatPrestec(int nouEstatPrestec) {
         this.estatPrestec = nouEstatPrestec;
+    }
+
+    public void marcarFinalPrestec() {
+        this.estatPrestec = 0;
     }
 
 
     @Override //TODO: Sempre fer aquesta estructura
     public String toString() {
         return "Prestec [idPrestec=" + idPrestec + ", idLector=" + idLector +
-                ", ISBNLlibre=" + ISBNLlibre + ", dataIniciPrestec=" + dataIniciPrestec +
+                ", ISBNLlibre=" + isbnLlibre + ", dataIniciPrestec=" + dataIniciPrestec +
                 ", dataFinalPrestec=" + dataFinalPrestec + ", estatPrestec=" + estatPrestec + "]";
     }
 
