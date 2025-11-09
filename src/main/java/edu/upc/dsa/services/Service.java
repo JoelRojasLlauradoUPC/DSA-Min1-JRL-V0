@@ -331,7 +331,7 @@ public class Service {
         }
         else
         {
-            return Response.status(200).entity(prestecAFinalitzar).build();
+            return Response.status(201).entity(prestecAFinalitzar).build();
         }
     }
 
